@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Posting Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text Posting Website</h1>
+    <p>Post your thoughts and ideas below.</p>
+    <textarea id="text" rows="10" maxlength="400"></textarea><br>
+    <button onclick="postText()">Post</button>
+
+    <h2>Posted Text</h2>
+    <ul id="postedTexts"></ul>
+
+    <script>
+        function postText() {
+            const text = document.getElementById("text").value;
+            if (text.trim() !== "") {
+                const now = new Date();
+                const timestamp = now.toLocaleString(); // Get the current date and time
+                
+                const listItem = document.createElement("li");
+                listItem.textContent = `${timestamp}: ${text}`;
+                document.getElementById("postedTexts").appendChild(listItem);
+                document.getElementById("text").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
